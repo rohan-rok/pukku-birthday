@@ -2,42 +2,55 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
 <title>Happy Birthday Pukku!</title>
-<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Fredoka:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#dceafb;display:flex;justify-content:center}
-.ph{width:360px;height:680px;margin:1rem auto;border-radius:28px;overflow:hidden;position:relative;border:8px solid #22304f;background:#eef5fd;font-family:'Patrick Hand',cursive;color:#1b2a52;user-select:none;-webkit-tap-highlight-color:transparent}
-@media (max-width:500px){.ph{width:100vw;height:100dvh;margin:0;border:0;border-radius:0}}
-.sc{position:absolute;inset:0;display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .5s,transform .5s;transform:scale(1.06);padding:22px;text-align:center;box-sizing:border-box;overflow-y:auto}
-.sc.on{opacity:1;pointer-events:auto;transform:none}
-.in{position:relative;z-index:1;margin:auto 0;display:flex;flex-direction:column;align-items:center}
-.on .in>*:not(.noanim){animation:pop .6s cubic-bezier(.34,1.56,.64,1) backwards}
+:root{--ink:#2d3561}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:radial-gradient(#fff 2px,transparent 2.5px) 0 0/24px 24px,#cfe0fb}
+.ph{position:absolute;left:50%;top:50%;width:360px;height:700px;border-radius:34px;overflow:hidden;border:8px solid var(--ink);background:#f5f9ff;font-family:'Patrick Hand',cursive;color:var(--ink);user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;transform:translate(-50%,-50%)}
+.ph.full{border:0;border-radius:0}
+.sc{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;opacity:0;visibility:hidden;transform:scale(1.08);transition:opacity .55s,transform .55s,visibility 0s .55s;padding:20px 18px;text-align:center;overflow:hidden}
+.sc.on{opacity:1;visibility:visible;transform:none;transition:opacity .55s,transform .55s}
+.ging{background-color:var(--b0);background-image:linear-gradient(90deg,var(--g) 50%,transparent 50%),linear-gradient(var(--g) 50%,transparent 50%);background-size:44px 44px}
+.in{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;width:100%}
+.on .in>*:not(.noanim){animation:pop .65s cubic-bezier(.34,1.56,.64,1) backwards}
 .on .in>*:nth-child(2){animation-delay:.12s}.on .in>*:nth-child(3){animation-delay:.24s}.on .in>*:nth-child(4){animation-delay:.36s}.on .in>*:nth-child(5){animation-delay:.48s}
-@keyframes pop{from{opacity:0;transform:translateY(24px) scale(.85)}}
-.fl{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-.flo{position:absolute;bottom:-40px;animation:up linear infinite;opacity:.7}
+@keyframes pop{from{opacity:0;transform:translateY(26px) scale(.82)}}
+.fl{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.flo{position:absolute;bottom:-40px;animation:up linear infinite;opacity:.75}
 .flo svg{width:100%;height:100%;fill:currentColor}
-.sc:not(.on) .flo{animation-play-state:paused}
-@keyframes up{to{transform:translateY(-110vh) rotate(220deg)}}
-.bal{width:34px;height:42px;border-radius:50% 50% 48% 48%/56% 56% 44% 44%;border:2px solid #1b2a52;opacity:.95;animation-name:upb}
-.bal:after{content:'';position:absolute;left:50%;top:100%;width:1.5px;height:34px;background:#1b2a52}
-@keyframes upb{50%{transform:translate(14px,-55vh)}to{transform:translate(-6px,-115vh)}}
-.box{background:#fff;border:2.5px solid #1b2a52;border-radius:16px;padding:12px 16px;box-shadow:4px 4px 0 #1b2a52}
-.btn{font-family:Fredoka,sans-serif;font-size:18px;font-weight:500;background:#fff;color:#1b2a52;border:2.5px solid #1b2a52;border-radius:22px;padding:8px 22px;cursor:pointer;margin:6px;line-height:1.2;box-shadow:3px 3px 0 #1b2a52;transition:transform .12s,box-shadow .12s}
-.btn:active{transform:translate(3px,3px);box-shadow:0 0 0 #1b2a52}
-.btn.b{background:#3f73c4;color:#fff}
-.btn.p{background:#e4577f;color:#fff}
-.tag{display:inline-block;background:#fff;border:2px solid #1b2a52;border-radius:20px;padding:4px 14px;font-size:18px;color:#1b2a52}
-.ttl{font-family:Fredoka,sans-serif;font-size:29px;font-weight:500;color:#2a4a8f;margin:6px 0;line-height:1.15}
-.txt{font-size:21px;line-height:1.3;margin:6px 0;color:#1b2a52}
-.wv{display:inline-block;animation:wv 1.6s ease-in-out infinite}@keyframes wv{0%,100%{transform:translateY(0)}30%{transform:translateY(-7px)}}
-.pf{position:relative;background:#cfe0f6;overflow:hidden;display:flex;align-items:center;justify-content:center;color:#2a4a8f;font-size:14px;cursor:pointer;border-radius:6px}
+.sc:not(.on) .flo,.sc:not(.on) .flag{animation-play-state:paused}
+@keyframes up{to{transform:translateY(calc(var(--H) * -1 - 80px)) rotate(220deg)}}
+.bal{width:36px;height:44px;border-radius:50% 50% 48% 48%/56% 56% 44% 44%;border:2.5px solid var(--ink);opacity:.95;animation-name:upb}
+.bal:before{content:'';position:absolute;left:8px;top:7px;width:8px;height:12px;border-radius:50%;background:rgba(255,255,255,.6)}
+.bal:after{content:'';position:absolute;left:50%;top:100%;width:1.5px;height:36px;background:var(--ink)}
+@keyframes upb{50%{transform:translate(16px,calc(var(--H) * -.5))}to{transform:translate(-8px,calc(var(--H) * -1 - 120px))}}
+.gar{position:absolute;top:0;left:0;width:100%;height:56px}
+.flag{transform-box:fill-box;transform-origin:50% 0;animation:sway 2.4s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-7deg)}to{transform:rotate(7deg)}}
+.box{position:relative;background:#fffdf9;border:3px solid var(--ink);border-radius:22px;padding:16px 20px;box-shadow:6px 7px 0 var(--ac,#ffb6cb);outline:2px dashed var(--st,#ffc2d4);outline-offset:-10px}
+.btn{position:relative;font-family:Fredoka,sans-serif;font-weight:600;font-size:18px;color:#fff;background:var(--bc,#6b9bea);border:3px solid var(--ink);border-radius:999px;padding:9px 26px;box-shadow:0 5px 0 var(--ink);cursor:pointer;margin:10px 5px 4px;transition:transform .1s,box-shadow .1s;line-height:1.2}
+.btn:before{content:'';position:absolute;left:14px;top:5px;width:16px;height:6px;border-radius:6px;background:rgba(255,255,255,.55)}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--ink)}
+.btn.p{--bc:#ff7fa8}.btn.w{background:#fff;color:var(--ink)}.btn.w:before{background:#e3ecfb}
+.breathe{animation:br 2.2s ease-in-out infinite}@keyframes br{50%{transform:scale(1.06)}}
+.tag{display:inline-block;background:#fff;border:2.5px solid var(--ink);border-radius:999px;padding:5px 16px;font-size:18px;color:var(--ink);box-shadow:0 3px 0 var(--ink)}
+.ttl{font-family:Fredoka,sans-serif;font-weight:600;font-size:28px;line-height:1.2;color:#5b84d6;margin:4px 0;white-space:nowrap}
+.txt{font-size:21px;line-height:1.3;margin:4px 0;color:var(--ink)}
+.sig{font-size:23px;color:#ff6f9a;margin-top:4px}
+.wv{display:inline-block;animation:wv 1.7s ease-in-out infinite;text-shadow:0 2px 0 rgba(45,53,97,.15)}
+@keyframes wv{0%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
+.spk{position:absolute;width:22px;height:22px;animation:tw 1.8s ease-in-out infinite;pointer-events:none;z-index:3}
+.spk svg{width:100%;height:100%;stroke:var(--ink);stroke-width:1.4}
+@keyframes tw{50%{transform:scale(.5) rotate(40deg);opacity:.6}}
+.pf{position:relative;background:#dbe7fb;overflow:hidden;cursor:pointer;border-radius:4px}
 .pf img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.pol{position:relative;background:#fff;padding:7px 7px 2px;border-radius:4px;border:2px solid #1b2a52;display:inline-block;margin:10px 2px;vertical-align:top;transform:rotate(var(--r))}
-.on .pol{animation:drop .9s cubic-bezier(.34,1.56,.64,1) backwards}
-@keyframes drop{from{transform:translateY(-420px) rotate(calc(var(--r) - 40deg))}}
-.tape{position:absolute;top:-9px;left:50%;width:40px;height:15px;margin-left:-20px;opacity:.9;transform:rotate(-5deg);border:1.5px solid #1b2a52}
+.pol{position:relative;background:#fff;padding:7px 7px 3px;border:2.5px solid var(--ink);border-radius:6px;display:inline-block;margin:14px 3px 6px;vertical-align:top;transform:rotate(var(--r));box-shadow:3px 4px 0 rgba(45,53,97,.18)}
+.on .pol{animation:drop .95s cubic-bezier(.34,1.56,.64,1) backwards}
+@keyframes drop{from{transform:translateY(-460px) rotate(calc(var(--r) - 40deg))}}
+.tape{position:absolute;top:-11px;left:50%;width:46px;height:17px;margin-left:-23px;transform:rotate(-6deg);border:2px solid var(--ink);border-radius:3px;background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.5) 0 4px,transparent 4px 8px);z-index:2}
 .leg{transform-box:fill-box;transform-origin:50% 0}
 .walking .la{animation:sw .3s infinite alternate}.walking .lb{animation:sw .3s infinite alternate-reverse}
 .walking .bod{animation:wd .3s infinite alternate}
@@ -45,162 +58,186 @@ body{margin:0;background:#dceafb;display:flex;justify-content:center}
 @keyframes wd{to{transform:translateY(-3px) rotate(-1.5deg)}}
 .blink{transform-box:fill-box;transform-origin:center;animation:bl 3.6s infinite}@keyframes bl{0%,90%,100%{transform:scaleY(1)}94%{transform:scaleY(.1)}}
 .ear{transform-box:fill-box;transform-origin:50% 100%;animation:ear 2.8s infinite}@keyframes ear{0%,80%,100%{transform:rotate(0)}86%{transform:rotate(-25deg)}92%{transform:rotate(10deg)}}
-.walkin{animation:walkin 3.8s ease-out forwards}@keyframes walkin{from{transform:translateX(-320px)}to{transform:translateX(0)}}
-.hop{animation:hop .7s cubic-bezier(.3,1.6,.6,1)}@keyframes hop{40%{transform:translateY(-38px) rotate(-6deg)}}
-.bob{animation:bob 1.3s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-8px)}}
-.zz{position:absolute;font-family:Fredoka;color:#7a5cc8;animation:zz 2.2s infinite}@keyframes zz{0%{opacity:0;transform:translate(0,0) scale(.6)}40%{opacity:1}100%{opacity:0;transform:translate(14px,-26px) scale(1.2)}}
+.yuzu{transform-box:fill-box;transform-origin:50% 100%;animation:wob 2.2s ease-in-out infinite}@keyframes wob{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+.hb{animation:hbf 1.6s ease-in-out infinite}@keyframes hbf{50%{transform:translateY(-5px)}}
+.walkin{animation:walkin 3.8s ease-out forwards}@keyframes walkin{from{transform:translateX(-360px)}to{transform:translateX(0)}}
+.hop{animation:hop .75s cubic-bezier(.3,1.6,.6,1)}@keyframes hop{40%{transform:translateY(-40px) rotate(-6deg)}}
+.bob{animation:bob 1.4s ease-in-out infinite}@keyframes bob{50%{transform:translateY(-8px)}}
+.zz{position:absolute;font-family:Fredoka;font-weight:600;color:#8a6ee0;animation:zz 2.2s infinite}@keyframes zz{0%{opacity:0;transform:translate(0,0) scale(.6)}40%{opacity:1}100%{opacity:0;transform:translate(16px,-28px) scale(1.2)}}
 .pulse{animation:pl 1.4s infinite}@keyframes pl{50%{transform:scale(1.1)}}
 .env{position:relative;width:250px;height:150px;transition:transform .7s 1s,opacity .5s 1.1s}
 .wig .env{animation:wig .5s 2}@keyframes wig{25%{transform:rotate(-6deg)}75%{transform:rotate(6deg)}}
-.flap{position:absolute;top:0;left:0;width:250px;height:92px;background:#9fc0eb;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s .3s;z-index:2}
-.seal{position:absolute;left:107px;top:70px;width:36px;height:36px;border-radius:50%;background:#e4577f;border:2px solid #1b2a52;z-index:3;display:flex;align-items:center;justify-content:center;transition:transform .35s}
-.seal svg{width:18px;fill:#fff}
+.flap{position:absolute;top:0;left:0;width:250px;height:92px;background:#a9c8f5;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .7s .3s;z-index:2}
+.seal{position:absolute;left:105px;top:68px;width:40px;height:40px;border-radius:50%;background:#ff7fa8;border:3px solid var(--ink);z-index:3;display:flex;align-items:center;justify-content:center;transition:transform .35s}
+.seal svg{width:20px;fill:#fff}
 .open .seal{transform:scale(0) rotate(120deg)}.open .flap{transform:rotateX(180deg)}.open .env{transform:translateY(70px) scale(.85);opacity:0}
 .card{position:absolute;opacity:0;transform:translateY(150px) scale(.3) rotate(-10deg);transition:transform 1.1s cubic-bezier(.34,1.56,.64,1) .9s,opacity .5s .9s}
 .open .card{opacity:1;transform:none}
-.cf{position:absolute;top:-14px;z-index:25;pointer-events:none;animation:fall linear forwards}@keyframes fall{to{transform:translate(var(--sx),110vh) rotate(760deg)}}
-.tb{position:absolute;width:16px;height:16px;z-index:30;pointer-events:none;animation:burst .9s ease-out forwards}.tb svg{width:100%;height:100%;fill:currentColor}
+.cf{position:absolute;top:-14px;z-index:25;pointer-events:none;animation:fall linear forwards}
+@keyframes fall{to{transform:translate(var(--sx),calc(var(--H) + 40px)) rotate(760deg)}}
+.tb{position:absolute;width:18px;height:18px;z-index:30;pointer-events:none;animation:burst .9s ease-out forwards}.tb svg{width:100%;height:100%;fill:currentColor}
 @keyframes burst{to{transform:translate(var(--dx),var(--dy)) scale(.3) rotate(90deg);opacity:0}}
 .fla{transform-box:fill-box;transform-origin:50% 100%;animation:fl .45s infinite alternate}@keyframes fl{to{transform:scaleY(.78) scaleX(1.12) rotate(4deg)}}
 .smk{opacity:0}.smk.go{animation:smk 1.6s ease-out forwards}@keyframes smk{0%{opacity:.9;transform:translateY(0)}100%{opacity:0;transform:translateY(-26px)}}
-.cd{display:flex;gap:8px;justify-content:center;margin:12px 0}
-.cd>div{color:#fff;border:2.5px solid #1b2a52;border-radius:14px;width:62px;padding:6px 0;font-family:Fredoka;font-size:27px;line-height:1.1;box-shadow:3px 3px 0 #1b2a52}
-.cd small{display:block;font-family:'Patrick Hand';font-size:14px;opacity:.9}
-.tk{animation:tk .35s}@keyframes tk{50%{transform:scale(1.18)}}
-.hit{animation:hit .7s cubic-bezier(.3,1.8,.6,1)}@keyframes hit{40%{transform:scale(1.45) rotate(-12deg)}}
-#page{transform-origin:left center}
+.cd{display:flex;gap:8px;justify-content:center;margin:12px 0 14px}
+.cd>div{color:#fff;border:3px solid var(--ink);border-radius:16px;width:64px;padding:7px 0 5px;font-family:Fredoka;font-weight:600;font-size:27px;line-height:1.1;box-shadow:0 4px 0 var(--ink)}
+.cd small{display:block;font-family:'Patrick Hand';font-size:14px;font-weight:400;opacity:.95}
+.tk{animation:tk .35s}@keyframes tk{50%{transform:scale(1.15)}}
+.pad{position:relative;width:220px;height:236px;margin-top:22px;cursor:pointer}
+.rings{position:absolute;top:-14px;left:0;right:0;display:flex;justify-content:space-between;padding:0 46px;z-index:6}
+.rings i{width:14px;height:28px;border:3px solid var(--ink);border-radius:8px;background:#fff}
+.sheet{position:absolute;inset:0;background:#fffdf9;border:3px solid var(--ink);border-radius:18px;overflow:hidden;transform-origin:90% 0}
+.sheet .hd{font-family:Fredoka;font-weight:600;font-size:21px;color:#fff;padding:18px 0 8px;letter-spacing:2px;border-bottom:3px solid var(--ink)}
+.sheet .num{font-family:Fredoka;font-weight:600;font-size:92px;line-height:1;margin-top:8px}
+.sheet .wd{font-size:22px}
+.tear{animation:tear 1.1s cubic-bezier(.55,0,.8,.2) forwards}
+@keyframes tear{0%{transform:none}20%{transform:rotate(-8deg)}35%{transform:rotate(4deg) translateY(6px)}100%{transform:translate(-80px,700px) rotate(-70deg);opacity:0}}
+.stamp{position:absolute;right:10px;bottom:12px;transform:rotate(-14deg);border:2.5px solid #ff6f9a;color:#ff6f9a;border-radius:10px;padding:2px 8px;font-family:Fredoka;font-weight:600;font-size:14px;background:#fff;opacity:0}
+.torn .stamp{opacity:1;animation:stp .6s cubic-bezier(.3,1.8,.6,1) backwards .2s}@keyframes stp{from{transform:rotate(-14deg) scale(2.4);opacity:0}}
+#page{transform-origin:left center;width:276px;padding:20px 18px 14px}
 #page.fo{animation:fo .28s ease-in forwards}@keyframes fo{to{transform:perspective(900px) rotateY(-90deg)}}
 #page.fi{animation:fi .4s ease-out}@keyframes fi{from{transform:perspective(900px) rotateY(80deg)}}
-.lined{background:repeating-linear-gradient(#fff 0 27px,#dce8f8 27px 28px)}
-.lb{position:absolute;inset:0;background:rgba(20,32,62,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:20;opacity:0;pointer-events:none;transition:opacity .4s}
-.lb.on{opacity:1;pointer-events:auto}.lb.on .pol{animation:drop .6s cubic-bezier(.34,1.56,.64,1)}
+.pframe{position:relative;display:inline-block;background:#fff;border:2.5px solid var(--ink);padding:7px;border-radius:6px;box-shadow:3px 4px 0 rgba(45,53,97,.18)}
+.badge{position:absolute;top:-16px;left:-16px;width:46px;height:46px;border-radius:50%;border:3px solid var(--ink);color:#fff;font-family:Fredoka;font-weight:600;font-size:19px;line-height:40px;transform:rotate(-10deg);z-index:2}
+.nav{display:flex;align-items:center;justify-content:center;gap:2px;margin-top:6px}
+.lined{background:repeating-linear-gradient(#fffdf9 0 27px,#dce8f8 27px 28px)}
+.lb{position:absolute;inset:0;background:rgba(32,40,80,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:50;opacity:0;visibility:hidden;transition:opacity .4s}
+.lb.on{opacity:1;visibility:visible}.lb.on .pol{animation:drop .6s cubic-bezier(.34,1.56,.64,1)}
 </style>
 </head>
 <body>
 <div class="ph" id="ph">
 
-<div class="sc" id="s9" style="background:repeating-conic-gradient(#e2d9fb 0 25%,#f6f2ff 0 50%) 0 0/44px 44px">
+<div class="sc" id="s9" style="background:radial-gradient(#fff 1.6px,transparent 2px) 0 0/26px 26px,linear-gradient(#cdbdff,#ffd6ea);--ac:#c7b5ff;--st:#ddd0ff">
  <div class="in">
-  <div class="box txt" style="width:270px">Psst! Capy is still getting your surprise ready</div>
-  <div style="position:relative;margin-top:6px"><div id="capyLock"></div><div class="zz" style="top:4px;right:30px;font-size:24px">z</div><div class="zz" style="top:-12px;right:12px;font-size:17px;animation-delay:.8s">z</div></div>
-  <div class="cd"><div style="background:#3f73c4"><span id="cdD">0</span><small>days</small></div><div style="background:#e4577f"><span id="cdH">0</span><small>hours</small></div><div style="background:#2f9e6e"><span id="cdM">0</span><small>mins</small></div><div style="background:#7a5cc8" id="secT" onclick="secret()"><span id="cdS">0</span><small>secs</small></div></div>
-  <div class="ttl box wave" style="font-size:22px">Come back on 13th November!</div>
+  <div class="box txt sp" style="width:290px">Psst… Kaju and Capy are still wrapping your surprise</div>
+  <div style="position:relative;margin-top:10px"><div id="capyLock"></div><div class="zz" style="top:6px;right:34px;font-size:24px">z</div><div class="zz" style="top:-12px;right:14px;font-size:17px;animation-delay:.8s">z</div></div>
+  <div class="cd"><div style="background:#6b9bea"><span id="cdD">0</span><small>days</small></div><div style="background:#ff7fa8"><span id="cdH">0</span><small>hours</small></div><div style="background:#45c08f"><span id="cdM">0</span><small>mins</small></div><div style="background:#8a6ee0" id="secT" onclick="secret()"><span id="cdS">0</span><small>secs</small></div></div>
+  <div class="box" style="width:300px;padding:12px 16px"><div class="ttl wave fit">Come back on 13th November!</div></div>
  </div>
 </div>
 
-<div class="sc" id="s0" style="background:repeating-conic-gradient(#c6dcf5 0 25%,#eef5fd 0 50%) 0 0/44px 44px">
+<div class="sc ging" id="s0" style="--b0:#f4f8ff;--g:rgba(107,155,234,.2);--ac:#9fc3ff;--st:#c6dbff">
  <div class="in">
-  <div class="box txt" style="margin-bottom:26px">Capy has a message for you!</div>
+  <div class="box txt sp" style="margin-bottom:24px;width:290px">Capy has a special delivery for you!</div>
   <div id="walker" class="noanim" onclick="go(1)" style="cursor:pointer"></div>
-  <div id="hint0" class="noanim" style="opacity:0;margin-top:18px;transition:opacity .4s"><span class="tag pulse">tap Capy</span></div>
+  <div id="hint0" class="noanim" style="opacity:0;margin-top:14px;transition:opacity .4s"><span class="tag pulse">tap Capy</span></div>
  </div>
 </div>
 
-<div class="sc" id="s1" style="background:repeating-linear-gradient(90deg,#fff1f5 0 18px,#fddbe6 18px 36px)">
+<div class="sc ging" id="s1" style="--b0:#fff5f8;--g:rgba(255,143,177,.18);--ac:#ffb6cb;--st:#ffd0de">
  <div class="in">
-  <div id="stage1" class="noanim" style="position:relative;width:300px;height:540px;display:flex;align-items:center;justify-content:center">
-    <div class="env"><div class="flap"></div><div style="position:absolute;inset:0;background:#c6dcf5;border:2.5px solid #1b2a52;border-radius:8px"></div><div class="seal"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6C19 16.5 12 21 12 21z"/></svg></div><div style="position:absolute;bottom:12px;width:100%;font-size:20px;color:#1b2a52">for Pukku</div></div>
-    <div class="card box" style="width:262px;padding:16px 14px">
-      <div class="tape" style="background:#ffc94d;left:24px;top:-8px;transform:rotate(-20deg)"></div><div class="tape" style="background:#6fd0a4;left:auto;right:4px;top:-8px;transform:rotate(18deg)"></div>
-      <div style="border:2.5px dashed #f08aa6;border-radius:10px;padding:6px;width:184px;margin:0 auto"><div class="pf" data-k="baby" data-cap="The very beginning" style="width:184px;height:220px"></div></div>
-      <div class="ttl wave" style="margin-top:10px">Happy Birthday Pukku!</div>
+  <div id="stage1" class="noanim" style="position:relative;width:300px;height:520px;display:flex;align-items:center;justify-content:center">
+    <div class="env"><div class="flap"></div><div style="position:absolute;inset:0;background:#cfe0fb;border:3px solid var(--ink);border-radius:10px"></div><div class="seal"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6C19 16.5 12 21 12 21z"/></svg></div><div style="position:absolute;bottom:12px;width:100%;font-size:21px">for Pukku</div></div>
+    <div class="card box sp" style="width:296px;padding:20px 18px 16px">
+      <div class="pframe" style="transform:rotate(-2deg)"><div class="tape" style="background-color:#ffd25e"></div><div class="pf" data-k="baby" data-cap="The very beginning" style="width:186px;height:226px"></div></div>
+      <div class="ttl wave fit" style="margin-top:12px">Happy Birthday Pukku!</div>
       <div class="txt">this is where it all began</div>
-      <button class="btn p" onclick="go(2)">keep going</button>
+      <button class="btn p breathe" onclick="go(2)">keep going</button>
     </div>
   </div>
  </div>
 </div>
 
-<div class="sc" id="s2" style="background:repeating-conic-gradient(#cdf0df 0 25%,#f0fbf6 0 50%) 0 0/44px 44px">
+<div class="sc ging" id="s2" style="--b0:#f2fcf7;--g:rgba(69,192,143,.16);--ac:#9ee3c4;--st:#c4f0dc">
  <div class="in">
-  <div class="box" style="width:270px">
+  <div id="capyPeek" class="bob noanim"></div>
+  <div class="box sp" style="width:300px;margin-top:6px" id="askBox">
     <div class="txt">Capy has a few more surprises. Want to see them?</div>
-    <button class="btn b" onclick="burstAt(this);setTimeout(function(){go(3)},350)">accept</button>
-    <button class="btn" id="no" onclick="flee()" onmouseenter="flee()">decline</button>
+    <button class="btn" onclick="burstAt(this);setTimeout(function(){go(3)},350)">accept</button>
+    <button class="btn w" id="no" onclick="flee()" onmouseenter="flee()">decline</button>
   </div>
  </div>
 </div>
 
-<div class="sc" id="s3" style="background:repeating-linear-gradient(90deg,#fffaea 0 18px,#ffeeb0 18px 36px)">
+<div class="sc" id="s3" style="background:radial-gradient(#ffe08a 2.5px,transparent 3px) 0 0/22px 22px,#fffaea;--ac:#ffe48a;--st:#ffeeb0">
  <div class="in">
-  <div class="box txt">Do you know what day it is today?</div>
-  <div class="box" style="width:230px;padding:0;overflow:hidden;cursor:pointer;margin-top:16px" onclick="dayTap()">
-    <div style="background:#3f73c4;color:#fff;font-family:Fredoka;font-size:28px;padding:8px;border-bottom:2.5px solid #1b2a52">NOV</div>
-    <div style="display:flex;justify-content:center;gap:16px;padding:18px">
-      <div style="width:58px;height:58px;border-radius:50%;background:#e2edfa;font-size:26px;line-height:58px;color:#5d79a8">12</div>
-      <div id="d13" style="width:58px;height:58px;border-radius:50%;background:#e4577f;color:#fff;font-size:26px;line-height:53px;border:2.5px solid #1b2a52;box-sizing:border-box">13</div>
+  <div class="box txt sp" style="width:290px">Do you know what day it is today?</div>
+  <div class="pad" id="pad" onclick="dayTap()">
+    <div class="rings"><i></i><i></i></div>
+    <div class="sheet" style="transform:translate(5px,6px)"></div>
+    <div class="sheet" style="box-shadow:5px 6px 0 #ffb6cb">
+      <div class="hd" style="background:#6b9bea">NOVEMBER</div>
+      <div class="num" style="color:#ff6f9a">13</div>
+      <div class="wd">Friday</div>
+      <div class="stamp">PUKKU DAY</div>
+    </div>
+    <div class="sheet" id="sheet12">
+      <div class="hd" style="background:#ff9fbf">NOVEMBER</div>
+      <div class="num" style="color:#9aa7c7">12</div>
+      <div class="wd">Thursday</div>
     </div>
   </div>
-  <div id="dhint" style="margin-top:14px"><span class="tag pulse">tap the date</span></div>
-  <div id="dans" style="display:none"><div class="ttl box wave" style="margin-top:12px">It's Pukku day!</div><button class="btn b" onclick="go(4)">next</button></div>
+  <div id="dhint" style="margin-top:20px"><span class="tag pulse">tear off the page</span></div>
+  <div id="dans" style="display:none;margin-top:16px"><div class="box" style="width:280px;padding:10px 16px"><div class="ttl wave fit">It's Pukku Day!</div></div><button class="btn" onclick="go(4)">next</button></div>
  </div>
 </div>
 
-<div class="sc" id="s4" style="background:#ffeee6 radial-gradient(#ffcdb8 2.5px,transparent 3px) 0 0/22px 22px">
+<div class="sc" id="s4" style="background:radial-gradient(#ffd0bf 2.5px,transparent 3px) 0 0/22px 22px,#fff1ea;--ac:#ffc7a8;--st:#ffdccb">
  <div class="in">
-  <div class="txt box" style="width:260px">Capy wants you to make a wish first, then tap the candles to blow them out</div>
-  <svg viewBox="0 0 200 200" width="230" onclick="blow()" style="cursor:pointer;margin-top:10px">
+  <div class="txt box sp" style="width:290px">Close your eyes, make a wish, then tap the candles</div>
+  <svg viewBox="0 0 200 200" width="236" onclick="blow()" style="cursor:pointer;margin-top:10px">
     <g id="cnd"></g>
-    <rect x="40" y="84" width="120" height="46" rx="12" fill="#ffd3e0" stroke="#1b2a52" stroke-width="2.5"/>
-    <path d="M40 98 q10 14 20 0 q10 14 20 0 q10 14 20 0 q10 14 20 0 q10 14 20 0 q10 14 20 0 V96 a12 12 0 0 0 -12 -12 H52 a12 12 0 0 0 -12 12z" fill="#fffaf2" stroke="#1b2a52" stroke-width="2"/>
-    <rect x="60" y="112" width="8" height="3" rx="1.5" fill="#3f73c4" transform="rotate(30 64 113)"/><rect x="90" y="116" width="8" height="3" rx="1.5" fill="#2f9e6e" transform="rotate(-25 94 117)"/><rect x="120" y="110" width="8" height="3" rx="1.5" fill="#e0a400" transform="rotate(40 124 111)"/><rect x="140" y="118" width="8" height="3" rx="1.5" fill="#7a5cc8" transform="rotate(-10 144 119)"/>
-    <rect x="24" y="130" width="152" height="52" rx="12" fill="#bcd6f5" stroke="#1b2a52" stroke-width="2.5"/>
-    <circle cx="48" cy="156" r="6" fill="#e4577f"/><circle cx="80" cy="156" r="6" fill="#ffc94d"/><circle cx="112" cy="156" r="6" fill="#6fd0a4"/><circle cx="144" cy="156" r="6" fill="#a98be8"/>
-    <ellipse cx="100" cy="186" rx="92" ry="8" fill="#ffe08a" stroke="#1b2a52" stroke-width="2"/>
+    <rect x="40" y="84" width="120" height="46" rx="12" fill="#ffd3e0" stroke="#2d3561" stroke-width="2.5"/>
+    <path d="M40 98 q10 14 20 0 q10 14 20 0 q10 14 20 0 q10 14 20 0 q10 14 20 0 q10 14 20 0 V96 a12 12 0 0 0 -12 -12 H52 a12 12 0 0 0 -12 12z" fill="#fffaf2" stroke="#2d3561" stroke-width="2"/>
+    <rect x="60" y="112" width="8" height="3" rx="1.5" fill="#6b9bea" transform="rotate(30 64 113)"/><rect x="90" y="116" width="8" height="3" rx="1.5" fill="#45c08f" transform="rotate(-25 94 117)"/><rect x="120" y="110" width="8" height="3" rx="1.5" fill="#f2b600" transform="rotate(40 124 111)"/><rect x="140" y="118" width="8" height="3" rx="1.5" fill="#8a6ee0" transform="rotate(-10 144 119)"/>
+    <rect x="24" y="130" width="152" height="52" rx="12" fill="#c6dbff" stroke="#2d3561" stroke-width="2.5"/>
+    <circle cx="48" cy="156" r="6" fill="#ff7fa8"/><circle cx="80" cy="156" r="6" fill="#ffd25e"/><circle cx="112" cy="156" r="6" fill="#7fe0b5"/><circle cx="144" cy="156" r="6" fill="#b9a3ff"/>
+    <ellipse cx="100" cy="186" rx="92" ry="8" fill="#ffe08a" stroke="#2d3561" stroke-width="2"/>
   </svg>
-  <div id="wish" style="display:none"><div class="ttl wave">Wish sent!</div><button class="btn p" onclick="go(5)">next</button></div>
+  <div id="wish" style="display:none"><div class="box" style="width:240px;padding:8px 16px"><div class="ttl wave fit">Wish sent!</div></div><button class="btn p" onclick="go(5)">next</button></div>
  </div>
 </div>
 
-<div class="sc" id="s5" style="background:#f6f2ff radial-gradient(#d8ccf7 2.5px,transparent 3px) 0 0/20px 20px">
+<div class="sc ging" id="s5" style="--b0:#f8f5ff;--g:rgba(138,110,224,.14);--ac:#c7b5ff;--st:#ddd0ff">
  <div class="in">
-  <div class="ttl box wave" style="font-size:26px">Little Pukku</div>
-  <div style="margin-top:16px;white-space:nowrap">
-    <div class="pol" style="--r:-6deg;animation-delay:.2s"><div class="tape" style="background:#f08aa6"></div><div class="pf" data-k="baby" data-cap="The very beginning" style="width:86px;height:110px"></div><div class="txt" style="font-size:15px">the beginning</div></div><div class="pol" style="--r:5deg;animation-delay:.45s"><div class="tape" style="background:#ffc94d"></div><div class="pf" data-k="toddler" data-cap="Tiny serious face" style="width:86px;height:110px"></div><div class="txt" style="font-size:15px">tiny serious</div></div><div class="pol" style="--r:-3deg;animation-delay:.7s"><div class="tape" style="background:#6fd0a4"></div><div class="pf" data-k="train" data-cap="First adventures" style="width:86px;height:110px"></div><div class="txt" style="font-size:15px">adventures</div></div>
+  <div class="box sp" style="width:260px;padding:10px 16px"><div class="ttl wave fit">Little Pukku</div></div>
+  <div style="margin-top:14px;white-space:nowrap">
+    <div class="pol" style="--r:-6deg;animation-delay:.2s"><div class="tape" style="background-color:#ff9fbf"></div><div class="pf" data-k="baby" data-cap="The very beginning" style="width:88px;height:114px"></div><div class="txt" style="font-size:15px">the beginning</div></div><div class="pol" style="--r:5deg;animation-delay:.45s"><div class="tape" style="background-color:#ffd25e"></div><div class="pf" data-k="toddler" data-cap="Tiny serious face" style="width:88px;height:114px"></div><div class="txt" style="font-size:15px">tiny serious</div></div><div class="pol" style="--r:-3deg;animation-delay:.7s"><div class="tape" style="background-color:#7fe0b5"></div><div class="pf" data-k="train" data-cap="First adventures" style="width:88px;height:114px"></div><div class="txt" style="font-size:15px">adventures</div></div>
   </div>
-  <div style="margin-top:10px"><span class="tag">tap a photo to open it</span></div>
-  <button class="btn b" onclick="go(6)">next</button>
+  <div style="margin-top:12px"><span class="tag">tap a photo to open it</span></div>
+  <button class="btn" onclick="go(6)">next</button>
  </div>
 </div>
 
-<div class="sc" id="s6" style="background:#eaf4ff radial-gradient(#bcd4f2 2.5px,transparent 3px) 0 0/18px 18px">
+<div class="sc" id="s6" style="background:radial-gradient(#bcd4f2 2.5px,transparent 3px) 0 0/18px 18px,#eef5ff;--ac:#9fc3ff;--st:#c6dbff">
  <div class="in">
   <div id="letterEnv" onclick="openLetter()" style="cursor:pointer">
-    <svg viewBox="0 0 200 130" width="230" class="bob"><rect x="4" y="4" width="192" height="122" rx="8" fill="#ffd3e0" stroke="#1b2a52" stroke-width="2.5"/><path d="M4 8 l96 66 l96 -66" fill="none" stroke="#1b2a52" stroke-width="2.5"/><path d="M100 86s-12-7.5-15.8-15A8.3 8.3 0 0 1 100 62a8.3 8.3 0 0 1 15.8 9C112 78.5 100 86 100 86z" fill="#e4577f" stroke="#1b2a52" stroke-width="2"/></svg>
-    <div style="margin-top:10px"><span class="tag pulse">a letter for you, tap to open</span></div>
+    <svg viewBox="0 0 200 130" width="236" class="bob"><rect x="4" y="4" width="192" height="122" rx="10" fill="#ffd3e0" stroke="#2d3561" stroke-width="3"/><path d="M4 10 l96 66 l96 -66" fill="none" stroke="#2d3561" stroke-width="3"/><path d="M100 88s-12-7.5-15.8-15A8.3 8.3 0 0 1 100 64a8.3 8.3 0 0 1 15.8 9C112 80.5 100 88 100 88z" fill="#ff7fa8" stroke="#2d3561" stroke-width="2.5"/></svg>
+    <div style="margin-top:12px"><span class="tag pulse">a letter for you, tap to open</span></div>
   </div>
-  <div id="letter" class="box lined" style="display:none;width:282px;text-align:left" onclick="finishType()">
-    <div class="ttl" style="font-size:24px;color:#e4577f">Dear Pukku,</div>
-    <div class="txt" id="ltxt" style="font-size:19px;min-height:150px"></div>
-    <div class="txt" style="text-align:right;color:#7a5cc8">with love, always</div>
+  <div id="letter" class="box lined sp" style="display:none;width:300px;text-align:left" onclick="finishType()">
+    <div class="ttl" style="font-size:25px;color:#ff6f9a">Dear Pukku,</div>
+    <div class="txt" id="ltxt" style="font-size:19px;min-height:176px"></div>
+    <div class="sig" style="text-align:right">With love, from Kaju</div>
     <div style="text-align:center"><button class="btn p" id="lnext" style="visibility:hidden" onclick="go(7)">next</button></div>
   </div>
  </div>
 </div>
 
-<div class="sc" id="s7" style="background:repeating-conic-gradient(#d6e5f8 0 25%,#fff6e0 0 50%) 0 0/60px 60px">
+<div class="sc ging" id="s7" style="--b0:#fffaf0;--g:rgba(107,155,234,.13);--ac:#ffb6cb;--st:#ffd0de">
  <div class="in">
-  <div class="ttl box wave" style="font-size:22px">10 things I love about you</div>
-  <div id="page" class="box" style="width:250px;margin-top:12px;cursor:pointer" onclick="flipPage(1)"></div>
-  <div><button class="btn" onclick="flipPage(-1)">back</button><button class="btn b" onclick="flipPage(1)">next page</button></div>
-  <div><span class="tag" id="cnt" style="font-size:15px"></span></div>
+  <div class="box sp" style="width:300px;padding:10px 16px"><div class="ttl wave fit">10 things I love about you</div></div>
+  <div id="page" class="box" style="margin-top:22px;cursor:pointer" onclick="flipPage(1)"></div>
+  <div class="nav"><button class="btn w" onclick="flipPage(-1)">back</button><span class="tag" id="cnt" style="font-size:16px;margin:10px 4px 4px"></span><button class="btn" onclick="flipPage(1)">next</button></div>
  </div>
 </div>
 
-<div class="sc" id="s8" style="background:repeating-conic-gradient(#c6dcf5 0 25%,#eef5fd 0 50%) 0 0/44px 44px">
+<div class="sc ging" id="s8" style="--b0:#f4f8ff;--g:rgba(107,155,234,.2);--ac:#ffb6cb;--st:#ffd0de">
  <div class="in">
-  <div id="capyEnd" class="bob"></div>
-  <div class="box" style="width:270px;margin-top:10px">
-    <div class="ttl wave">Happy Birthday Pukku!</div>
+  <div id="capyEnd" class="bob noanim"></div>
+  <div class="box sp" style="width:300px;margin-top:6px">
+    <div class="ttl wave fit">Happy Birthday Pukku!</div>
     <div class="txt">Capy says: you're so loved, today and always.</div>
-    <button class="btn p" onclick="confetti(70)">more confetti</button><button class="btn b" onclick="restart()">start again</button>
+    <div class="sig">With love, from Kaju</div>
+    <button class="btn p" onclick="confetti(70)">confetti!</button><button class="btn" onclick="restart()">again</button>
   </div>
  </div>
 </div>
 
 <div class="lb" id="lb" onclick="this.classList.remove('on')">
-  <div class="pol" style="--r:-2deg"><div class="tape" style="background:#ffc94d"></div><div class="pf" id="lbp" style="width:250px;height:320px"></div></div>
-  <div class="txt" id="lbc" style="color:#fff;font-size:24px"></div>
+  <div class="pol" style="--r:-2deg"><div class="tape" style="background-color:#ffd25e"></div><div class="pf" id="lbp" style="width:260px;height:340px"></div></div>
+  <div class="txt" id="lbc" style="color:#fff;font-size:24px;margin-top:10px"></div>
   <div class="txt" style="font-size:16px;color:#dbe7f8">tap anywhere to close</div>
 </div>
 </div>
@@ -219,67 +256,90 @@ var PHOTOS = {
 /* ===== The letter ===== */
 var LETTER = "From that little girl in the photos to the wonderful person you are today, you have filled every room with warmth and laughter. Thank you for being you. I hope this year brings you everything you wish for, and a little extra.";
 
-/* ===== 10 things: [title, message, photo link or ''] ===== */
+/* ===== 10 things: [title, message, photo link] ===== */
 var pages = [
-  ['Your smile','It makes every bad day better.',''],
-  ['Your laugh','Loud, silly, and the best sound.',''],
-  ['How you care','You always notice when someone needs you.',''],
-  ['Your silly side','Nobody makes me laugh the way you do.',''],
-  ['Your kindness','You are gentle with everyone, even on hard days.',''],
-  ['Your strength','You keep going, and you make it look easy.',''],
-  ['Your dreams','I love watching you chase them.',''],
-  ['Your little habits','Every one of them is so you.',''],
-  ['Our memories','Each one is my favourite.',''],
-  ['Just you','All of it, every single bit.','']
+  ['Your smile', 'One smile from you and my whole day fixes itself.', ''],
+  ['Your laugh', 'That laugh of yours is my favourite sound in the whole world.', 'https://i.ibb.co/d4WShF7h/Whats-App-Image-2026-11-07-at-8-25-15-PM.jpg'],
+  ['How you care', 'The way you look after me, checking if I ate, if I slept, if I am okay. Nobody has ever cared for me the way you do.', ''],
+  ['Your silly side', 'Your silly faces and random jokes. Nobody makes me laugh like you do.', 'https://i.ibb.co/Kz6c6zfF/Whats-App-Image-2026-11-07-at-8-25-51-PM-1.jpg'],
+  ['Your kindness', 'You are kind to everyone, even when nobody is watching.', 'https://i.ibb.co/9Hm5DtLW/Whats-App-Image-2026-11-07-at-8-25-49-PM.jpg'],
+  ['Your strength', 'You get through the hard days quietly and still come out smiling.', 'https://i.ibb.co/39RdGqbM/Whats-App-Image-2026-11-07-at-8-25-29-PM.jpg'],
+  ['Your dream', 'I saw the late nights and all the hard work you put in. You earned every bit of it, and I am so proud of you.', 'https://i.ibb.co/ksBsq56m/Whats-App-Image-2026-11-07-at-8-25-30-PM.jpg'],
+  ['Your little habits', 'All your tiny habits that are so you. I notice every single one.', 'https://i.ibb.co/5gYQMpyJ/Whats-App-Image-2026-11-07-at-8-25-12-PM-1.jpg'],
+  ['Our memories', 'Every memory with you is one I would happily live again.', 'https://i.ibb.co/tpYzNy20/Whats-App-Image-2026-11-07-at-8-29-27-PM.jpg'],
+  ['All of it', 'All of you, every single bit. Always.', 'https://i.ibb.co/hRCDBdkz/Whats-App-Image-2026-11-07-at-8-25-17-PM.jpg']
 ];
 
 /* ===== Site logic ===== */
-var RB=['#3f73c4','#e4577f','#e0a400','#2f9e6e','#7a5cc8'],PAS=['#f08aa6','#ffc94d','#7fa6df','#6fd0a4','#a98be8'];
-var PAL=[['#ffe1ea','#e4577f'],['#e1f0ff','#3f73c4'],['#fff3c4','#c99a06'],['#dcf7ea','#2f9e6e'],['#ece4ff','#7a5cc8']];
+var RB=['#5b84d6','#ff6f9a','#e7a900','#2fae7c','#8a6ee0'],PAS=['#ff9fbf','#ffd25e','#9fc3ff','#7fe0b5','#c7b5ff'];
+var PAL=[['#ffe6ee','#ff6f9a'],['#e6f0ff','#5b84d6'],['#fff4cf','#d99a00'],['#dff7ec','#2fae7c'],['#efe8ff','#8a6ee0']];
 var HEART='<svg viewBox="0 0 24 24"><path d="M12 21s-7-4.5-9.5-9A5 5 0 0 1 12 6a5 5 0 0 1 9.5 6C19 16.5 12 21 12 21z"/></svg>';
 var STAR='<svg viewBox="0 0 24 24"><path d="M12 2l2.6 6.6L21 9.3l-5 4.6 1.4 6.8L12 17l-5.4 3.7L8 13.9 3 9.3l6.4-.7z"/></svg>';
-var cur=9,pi=0,ph=document.getElementById('ph'),timer,typing,busy=false,taps=0,tapT;
+var SPARK='<svg viewBox="0 0 24 24"><path d="M12 1C13 8 16 11 23 12C16 13 13 16 12 23C11 16 8 13 1 12C8 11 11 8 12 1Z" fill="currentColor"/></svg>';
+var ph=document.getElementById('ph'),SC=1,cur=9,pi=0,timer,typing,busy=false,taps=0,tapT;
 function R(a){return a[Math.floor(Math.random()*a.length)]}
-function L(c,x,y,f){return '<rect class="leg '+c+'" x="'+x+'" y="'+y+'" width="13" height="22" rx="6" fill="'+f+'" stroke="#4e321d" stroke-width="2"/>'}
-function capy(m,id){
- var eye=m=='sleep'?'<path d="M103 38 q5 4 10 0" stroke="#2b1a0e" stroke-width="2.5" fill="none" stroke-linecap="round"/>':'<ellipse class="blink" cx="108" cy="37" rx="3.3" ry="3.9" fill="#2b1a0e"/><circle cx="109.3" cy="35.6" r="1.2" fill="#fff"/>';
- var body='<path d="M14 70 q0 -36 46 -38 l36 0 q18 0 18 22 l0 20 q0 18 -22 18 l-56 0 q-22 0 -22 -22z" fill="#c4915f" stroke="#4e321d" stroke-width="2.5"/><path d="M28 52 q16 -10 34 -8" stroke="#a8744a" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M24 64 q10 -6 20 -4" stroke="#a8744a" stroke-width="3" fill="none" stroke-linecap="round"/><g class="ear"><circle cx="92" cy="21" r="6" fill="#8f5f3a" stroke="#4e321d" stroke-width="2"/></g><g class="ear" style="animation-delay:.25s"><circle cx="104" cy="18" r="5" fill="#8f5f3a" stroke="#4e321d" stroke-width="2"/></g><rect x="84" y="20" width="52" height="44" rx="20" fill="#c4915f" stroke="#4e321d" stroke-width="2.5"/><ellipse cx="126" cy="46" rx="12" ry="14" fill="#a8744a"/><ellipse cx="130" cy="40" rx="2" ry="1.5" fill="#4e321d"/><ellipse cx="124" cy="40" rx="2" ry="1.5" fill="#4e321d"/><path d="M120 54 q5 4 10 0" stroke="#4e321d" stroke-width="2" fill="none" stroke-linecap="round"/>'+eye+'<circle cx="106" cy="48" r="4.5" fill="#f08aa6" opacity=".85"/><path d="M84 54 q8 10 22 8 l0 8 q-14 2 -24 -6z" fill="#f08aa6" stroke="#4e321d" stroke-width="1.5"/><circle cx="91" cy="62" r="1.6" fill="#fff"/><circle cx="98" cy="65" r="1.6" fill="#fff"/>';
- var ex=m=='walk'?'<g><rect x="114" y="56" width="30" height="20" rx="2" fill="#fff" stroke="#3f73c4" stroke-width="2"/><path d="M114 56 l15 11 l15 -11" fill="none" stroke="#3f73c4" stroke-width="2"/><circle cx="129" cy="69" r="3.5" fill="#e4577f"/></g>':m=='melon'?'<path d="M104 72 a24 24 0 0 0 44 0z" fill="#3fa34d" stroke="#1b2a52" stroke-width="1.5"/><path d="M107 72 a21 21 0 0 0 38 0z" fill="#f2f7e8"/><path d="M110 72 a18 18 0 0 0 32 0z" fill="#f2546b"/><circle cx="120" cy="78" r="1.6" fill="#2b1a0e"/><circle cx="128" cy="83" r="1.6" fill="#2b1a0e"/><circle cx="134" cy="77" r="1.6" fill="#2b1a0e"/><circle cx="20" cy="22" r="5" fill="#f08aa6"/><circle cx="142" cy="10" r="4" fill="#ffc94d"/><circle cx="8" cy="46" r="3.5" fill="#a98be8"/>':'';
- return '<svg '+(id?'id="'+id+'" ':'')+'class="'+(m=='walk'?'walking':'')+'" viewBox="0 0 150 120" width="200">'+L('lb',30,78,'#9a6a43')+L('la',82,78,'#9a6a43')+'<g class="bod">'+body+'</g>'+L('la',42,80,'#c4915f')+L('lb',94,80,'#c4915f')+ex+'</svg>'}
-document.getElementById('capyLock').innerHTML=capy('sleep');
-document.getElementById('walker').innerHTML=capy('walk','capy0');
-document.getElementById('capyEnd').innerHTML=capy('melon');
-var cand='';[[70,'#f08aa6'],[100,'#ffc94d'],[130,'#6fd0a4']].forEach(function(c,i){var x=c[0];cand+='<rect x="'+(x-5)+'" y="46" width="10" height="38" rx="3" fill="'+c[1]+'" stroke="#1b2a52" stroke-width="1.8"/><g id="fl'+i+'"><ellipse class="fla" cx="'+x+'" cy="31" rx="7" ry="13" fill="#ffb52e" style="animation-delay:'+(i*.15)+'s"/><ellipse cx="'+x+'" cy="35" rx="3" ry="6" fill="#fff4c4"/></g><path id="sm'+i+'" class="smk" d="M'+x+' 40 q-7 -10 2 -18 q7 -8 -2 -16" stroke="#9aa6bd" stroke-width="3" fill="none"/>'});
+
+function fit(){var W=innerWidth,H=innerHeight,s,w,h;
+ if(W<600){s=Math.min(W/360,H/640);w=W/s;h=H/s;ph.classList.add('full')}else{s=Math.min(1,(H-24)/700);w=360;h=700;ph.classList.remove('full')}
+ ph.style.width=w+'px';ph.style.height=h+'px';ph.style.transform='translate(-50%,-50%) scale('+s+')';ph.style.setProperty('--H',h+'px');SC=s}
+fit();addEventListener('resize',fit);
+
+function capy(m,id,w){
+ var ink='#5b3a24',fur='#c98f5c',dk='#a8723f',lt='#e2b588';
+ function L(c,x,y,f){return '<rect class="leg '+c+'" x="'+x+'" y="'+y+'" width="15" height="24" rx="7" fill="'+f+'" stroke="'+ink+'" stroke-width="2.2"/>'}
+ var eye=m=='sleep'?'<path d="M112 42 q6 5 12 0" stroke="'+ink+'" stroke-width="2.8" fill="none" stroke-linecap="round"/>':m=='party'?'<path d="M112 44 q6 -7 12 0" stroke="'+ink+'" stroke-width="2.8" fill="none" stroke-linecap="round"/>':'<g class="blink"><ellipse cx="118" cy="40" rx="4.3" ry="5.2" fill="#2b1a0e"/><circle cx="119.8" cy="37.8" r="1.7" fill="#fff"/><circle cx="116.8" cy="42.6" r=".9" fill="#fff"/></g>';
+ var top=m=='party'?'<g class="yuzu"><path d="M106 24 L119 -8 L131 20 Z" fill="#9fc3ff" stroke="'+ink+'" stroke-width="2.2" stroke-linejoin="round"/><path d="M111 13 L127 10 M115 3 L123 1" stroke="#ff8fb1" stroke-width="3" stroke-linecap="round"/><circle cx="119" cy="-9" r="5" fill="#ffd25e" stroke="'+ink+'" stroke-width="2"/></g>':'<g class="yuzu"><circle cx="122" cy="13" r="8.5" fill="#ffb347" stroke="'+ink+'" stroke-width="2.2"/><circle cx="119" cy="10" r="2" fill="#ffd9a0"/><path d="M122 5 q6 -7 12 -3 q-6 6 -12 3z" fill="#7cc47f" stroke="'+ink+'" stroke-width="1.6"/></g>';
+ var ex=m=='walk'?'<g><rect x="146" y="58" width="30" height="21" rx="3" fill="#fff" stroke="#6b9bea" stroke-width="2.2"/><path d="M146 58 l15 11 l15 -11" fill="none" stroke="#6b9bea" stroke-width="2.2"/><circle cx="161" cy="71" r="3.4" fill="#ff6f9a"/></g>':m=='party'?'<path d="M150 82 Q160 60 166 34" stroke="'+ink+'" stroke-width="1.6" fill="none"/><g class="hb"><path d="M166 34s-11-7-15-14.2A7.8 7.8 0 0 1 166 10.6a7.8 7.8 0 0 1 15 8.4C177 27 166 34 166 34z" fill="#ff6f9a" stroke="'+ink+'" stroke-width="2.2"/><ellipse cx="160" cy="18" rx="2.5" ry="1.6" fill="#fff" opacity=".8"/></g>':'';
+ return '<svg '+(id?'id="'+id+'" ':'')+'class="'+(m=='walk'?'walking':'')+'" viewBox="0 -22 190 152" width="'+w+'"><ellipse cx="80" cy="124" rx="56" ry="6" fill="rgba(45,53,97,.15)"/>'+L('lb',38,92,dk)+L('la',88,92,dk)+'<g class="bod"><path d="M24 88 C20 60 46 46 78 48 L100 50 C114 52 120 64 118 82 C116 100 102 108 86 108 L46 108 C32 108 26 100 24 88Z" fill="'+fur+'" stroke="'+ink+'" stroke-width="2.6"/><ellipse cx="72" cy="99" rx="30" ry="7" fill="'+lt+'" opacity=".75"/><path d="M42 62 q12 -8 26 -6 M34 75 q8 -5 16 -4" stroke="'+dk+'" stroke-width="3" fill="none" stroke-linecap="round"/><g class="ear"><ellipse cx="100" cy="25" rx="7" ry="8" fill="'+dk+'" stroke="'+ink+'" stroke-width="2.2"/></g><g class="ear" style="animation-delay:.25s"><ellipse cx="113" cy="21" rx="6" ry="7" fill="'+dk+'" stroke="'+ink+'" stroke-width="2.2"/></g><rect x="88" y="20" width="64" height="58" rx="27" fill="'+fur+'" stroke="'+ink+'" stroke-width="2.6"/><ellipse cx="140" cy="54" rx="15" ry="18" fill="#b9804e"/><ellipse cx="145" cy="44" rx="2.3" ry="1.7" fill="'+ink+'"/><ellipse cx="138" cy="44" rx="2.3" ry="1.7" fill="'+ink+'"/><path d="M136 62 q5 5 10 0" stroke="'+ink+'" stroke-width="2.2" fill="none" stroke-linecap="round"/>'+eye+'<ellipse cx="121" cy="55" rx="7" ry="4.5" fill="#ff9fbf" opacity=".85"/><path d="M92 64 q10 12 26 10 l0 9 q-17 3 -28 -8z" fill="#ff8fb1" stroke="'+ink+'" stroke-width="2"/><path d="M97 72 l-9 13 l10 -3z" fill="#ff8fb1" stroke="'+ink+'" stroke-width="2" stroke-linejoin="round"/><circle cx="101" cy="75" r="1.8" fill="#fff"/><circle cx="109" cy="78" r="1.8" fill="#fff"/>'+top+'</g>'+L('la',50,94,fur)+L('lb',100,94,fur)+ex+'</svg>'}
+document.getElementById('capyLock').innerHTML=capy('sleep','',200);
+document.getElementById('walker').innerHTML=capy('walk','capy0',220);
+document.getElementById('capyPeek').innerHTML=capy('normal','',160);
+document.getElementById('capyEnd').innerHTML=capy('party','',200);
+
+var cand='';[[70,'#ff9fbf'],[100,'#ffd25e'],[130,'#7fe0b5']].forEach(function(c,i){var x=c[0];cand+='<rect x="'+(x-5)+'" y="46" width="10" height="38" rx="3" fill="'+c[1]+'" stroke="#2d3561" stroke-width="2"/><g id="fl'+i+'"><ellipse class="fla" cx="'+x+'" cy="31" rx="7" ry="13" fill="#ffb52e" style="animation-delay:'+(i*.15)+'s"/><ellipse cx="'+x+'" cy="35" rx="3" ry="6" fill="#fff4c4"/></g><path id="sm'+i+'" class="smk" d="M'+x+' 40 q-7 -10 2 -18 q7 -8 -2 -16" stroke="#9aa6bd" stroke-width="3" fill="none"/>'});
 document.getElementById('cnd').innerHTML=cand;
-document.querySelectorAll('.sc').forEach(function(sc){var f=document.createElement('div');f.className='fl';var n=sc.id=='s8'?14:9;for(var i=0;i<n;i++){var s=document.createElement('div');var bal=sc.id=='s8'&&i<7;s.className='flo'+(bal?' bal':'');var z=11+Math.random()*14;s.style.left=Math.random()*92+'%';if(!bal){s.style.width=z+'px';s.style.height=z+'px';s.style.color=R(PAS);s.innerHTML=Math.random()<.55?HEART:STAR}else{s.style.background=R(PAS)}s.style.animationDuration=(bal?11:9)+Math.random()*8+'s';s.style.animationDelay=-Math.random()*16+'s';f.appendChild(s)}sc.insertBefore(f,sc.firstChild)});
-document.querySelectorAll('.wave').forEach(function(el){var t=el.textContent;el.innerHTML='';Array.from(t).forEach(function(c,i){var s=document.createElement('span');s.textContent=c==' '?'\u00a0':c;s.className='wv';s.style.animationDelay=(i*.07)+'s';s.style.color=RB[i%RB.length];el.appendChild(s)})});
+
+function garland(){var s='<svg class="gar" viewBox="0 0 360 56" preserveAspectRatio="none"><path d="M-10 6 Q180 50 370 6" fill="none" stroke="#2d3561" stroke-width="1.6"/>';for(var i=1;i<=9;i++){var t=i/10,x=(1-t)*(1-t)*-10+2*(1-t)*t*180+t*t*370,y=(1-t)*(1-t)*6+2*(1-t)*t*50+t*t*6;s+='<path class="flag" style="animation-delay:'+(i*.2)+'s" d="M'+(x-10)+' '+y+' L'+(x+10)+' '+y+' L'+x+' '+(y+22)+'Z" fill="'+PAS[i%5]+'" stroke="#2d3561" stroke-width="1.6" stroke-linejoin="round"/>'}return s+'</svg>'}
+document.querySelectorAll('.sc').forEach(function(sc){var f=document.createElement('div');f.className='fl';var n=sc.id=='s8'?14:8;for(var i=0;i<n;i++){var s=document.createElement('div');var bal=sc.id=='s8'&&i<7;s.className='flo'+(bal?' bal':'');var z=11+Math.random()*13;s.style.left=Math.random()*92+'%';if(!bal){s.style.width=z+'px';s.style.height=z+'px';s.style.color=R(PAS);s.innerHTML=Math.random()<.5?HEART:STAR}else{s.style.background=R(PAS)}s.style.animationDuration=(bal?11:10)+Math.random()*8+'s';s.style.animationDelay=-Math.random()*16+'s';f.appendChild(s)}if(sc.id!='s9'&&sc.id!='s1'&&sc.id!='s6')f.innerHTML+=garland();sc.insertBefore(f,sc.firstChild)});
+document.querySelectorAll('.sp').forEach(function(b){var a=document.createElement('div');a.className='spk';a.style.cssText='top:-13px;right:-11px;color:#ffd25e';a.innerHTML=SPARK;var c=document.createElement('div');c.className='spk';c.style.cssText='bottom:-11px;left:-13px;color:#ff9fbf;animation-delay:.9s;width:17px;height:17px';c.innerHTML=SPARK;b.appendChild(a);b.appendChild(c)});
+document.querySelectorAll('.wave').forEach(function(el){var t=el.textContent;el.innerHTML='';Array.from(t).forEach(function(ch,i){var s=document.createElement('span');s.textContent=ch==' '?'\u00a0':ch;s.className='wv';s.style.animationDelay=(i*.07)+'s';s.style.color=RB[i%RB.length];el.appendChild(s)})});
+function fitAll(){document.querySelectorAll('.fit').forEach(function(el){el.style.fontSize='';var fs=parseFloat(getComputedStyle(el).fontSize);while(el.scrollWidth>el.clientWidth+1&&fs>12){fs-=.5;el.style.fontSize=fs+'px'}})}
+fitAll();if(document.fonts)document.fonts.ready.then(fitAll);
 document.querySelectorAll('.pf[data-k]').forEach(function(el){var k=el.dataset.k,cap=el.dataset.cap;el.innerHTML='<img src="'+PHOTOS[k]+'" alt="'+cap+'">';el.onclick=function(e){e.stopPropagation();zoom(PHOTOS[k],cap)}});
-function burst(x,y,n){for(var i=0;i<(n||8);i++){var d=document.createElement('div');d.className='tb';d.innerHTML=Math.random()<.6?HEART:STAR;d.style.color=R(PAS.concat(RB));d.style.left=(x-8)+'px';d.style.top=(y-8)+'px';var a=Math.random()*6.28,r=40+Math.random()*50;d.style.setProperty('--dx',Math.cos(a)*r+'px');d.style.setProperty('--dy',Math.sin(a)*r-20+'px');ph.appendChild(d);setTimeout(function(x){return function(){x.remove()}}(d),950)}}
-function burstAt(el){var a=el.getBoundingClientRect(),b=ph.getBoundingClientRect();burst(a.left-b.left+a.width/2,a.top-b.top+a.height/2,12)}
-ph.addEventListener('pointerdown',function(e){var b=ph.getBoundingClientRect();burst(e.clientX-b.left,e.clientY-b.top,6)});
-function confetti(n){var c=PAS.concat(RB);for(var i=0;i<(n||55);i++){var d=document.createElement('div');d.className='cf';var z=6+Math.random()*6;d.style.width=z+'px';d.style.height=(Math.random()<.5?z:z*1.6)+'px';d.style.borderRadius=Math.random()<.4?'50%':'2px';d.style.left=Math.random()*ph.clientWidth+'px';d.style.background=R(c);d.style.setProperty('--sx',(Math.random()*120-60)+'px');d.style.animationDuration=(2.3+Math.random()*1.4)+'s';d.style.animationDelay=Math.random()*.7+'s';ph.appendChild(d);setTimeout(function(x){return function(){x.remove()}}(d),4300)}}
-function show(i){document.getElementById('s'+cur).classList.remove('on');cur=i;var s=document.getElementById('s'+i);s.classList.add('on');s.scrollTop=0}
+[PHOTOS.baby,PHOTOS.toddler,PHOTOS.train].concat(pages.map(function(p){return p[2]})).forEach(function(u){if(u){var i=new Image();i.src=u}});
+
+function loc(x,y){var r=ph.getBoundingClientRect();return [(x-r.left)/SC-ph.clientLeft,(y-r.top)/SC-ph.clientTop]}
+function burst(x,y,n){for(var i=0;i<(n||8);i++){var d=document.createElement('div');d.className='tb';d.innerHTML=Math.random()<.6?HEART:STAR;d.style.color=R(PAS.concat(RB));d.style.left=(x-9)+'px';d.style.top=(y-9)+'px';var a=Math.random()*6.28,r=40+Math.random()*55;d.style.setProperty('--dx',Math.cos(a)*r+'px');d.style.setProperty('--dy',Math.sin(a)*r-20+'px');ph.appendChild(d);setTimeout(function(x){return function(){x.remove()}}(d),950)}}
+function burstAt(el){var r=el.getBoundingClientRect(),p=loc(r.left+r.width/2,r.top+r.height/2);burst(p[0],p[1],12)}
+ph.addEventListener('pointerdown',function(e){var p=loc(e.clientX,e.clientY);burst(p[0],p[1],6)});
+function confetti(n){var c=PAS.concat(RB);for(var i=0;i<(n||55);i++){var d=document.createElement('div');d.className='cf';var z=6+Math.random()*6;d.style.width=z+'px';d.style.height=(Math.random()<.5?z:z*1.6)+'px';d.style.borderRadius=Math.random()<.4?'50%':'2px';d.style.left=Math.random()*ph.offsetWidth+'px';d.style.background=R(c);d.style.setProperty('--sx',(Math.random()*120-60)+'px');d.style.animationDuration=(2.3+Math.random()*1.4)+'s';d.style.animationDelay=Math.random()*.7+'s';ph.appendChild(d);setTimeout(function(x){return function(){x.remove()}}(d),4300)}}
+
+var no=document.getElementById('no'),askBox=document.getElementById('askBox');
+function homeNo(){if(no.parentNode!==askBox){askBox.appendChild(no)}no.style.position='';no.style.left='';no.style.top='';no.textContent='decline'}
+function show(i){document.getElementById('s'+cur).classList.remove('on');if(cur==2)homeNo();cur=i;document.getElementById('s'+i).classList.add('on')}
 var w=document.getElementById('walker');
 function startWalk(){document.getElementById('hint0').style.opacity=0;w.className='noanim';document.getElementById('capy0').classList.add('walking');void w.offsetWidth;w.classList.add('walkin')}
 w.addEventListener('animationend',function(e){if(e.target!==w)return;if(e.animationName=='walkin'){document.getElementById('capy0').classList.remove('walking');w.className='noanim hop';burstAt(w)}else if(e.animationName=='hop'){w.className='noanim bob';document.getElementById('hint0').style.opacity=1}});
+
 function tick(){var d=BIRTHDAY-new Date();if(d<=0){unlock();return}document.getElementById('cdD').textContent=Math.floor(d/864e5);document.getElementById('cdH').textContent=Math.floor(d/36e5)%24;document.getElementById('cdM').textContent=Math.floor(d/6e4)%60;document.getElementById('cdS').textContent=Math.floor(d/1e3)%60;var t=document.getElementById('secT');t.classList.remove('tk');void t.offsetWidth;t.classList.add('tk')}
 function unlock(){clearInterval(timer);show(0);startWalk()}
 function secret(){taps++;clearTimeout(tapT);tapT=setTimeout(function(){taps=0},2500);if(taps>=7){taps=0;unlock()}}
 var preview=location.search.indexOf('preview')>-1;
 if(new Date()<BIRTHDAY&&!preview){document.getElementById('s9').classList.add('on');tick();timer=setInterval(tick,1000)}else{cur=0;document.getElementById('s0').classList.add('on');startWalk()}
-function go(i){show(i);if(i==1){var st=document.getElementById('stage1');st.classList.add('wig');setTimeout(function(){st.classList.add('open')},1000);setTimeout(function(){burst(ph.clientWidth/2,ph.clientHeight*.45,16);confetti(30)},2100)}if(i==7){pi=0;render()}if(i==8)confetti(80)}
-var nn=0,lines=['decline','nope','try again','nice try','no escape','still no'];
-function flee(){var b=document.getElementById('no');b.style.position='absolute';b.style.left=(20+Math.random()*(ph.clientWidth-150))+'px';b.style.top=(60+Math.random()*(ph.clientHeight-180))+'px';b.style.zIndex=5;b.textContent=lines[++nn%lines.length]}
-function dayTap(){var d=document.getElementById('d13');d.classList.remove('hit');void d.offsetWidth;d.classList.add('hit');burstAt(d);document.getElementById('dhint').style.display='none';document.getElementById('dans').style.display='block';confetti(50)}
-function blow(){if(document.getElementById('wish').style.display=='block')return;[0,1,2].forEach(function(i){setTimeout(function(){document.getElementById('fl'+i).style.display='none';document.getElementById('sm'+i).classList.add('go')},i*260)});setTimeout(function(){document.getElementById('wish').style.display='block';confetti(70)},900)}
+
+function go(i){show(i);if(i==1){var st=document.getElementById('stage1');st.classList.add('wig');setTimeout(function(){st.classList.add('open')},1000);setTimeout(function(){burst(ph.offsetWidth/2,ph.offsetHeight*.42,18);confetti(35)},2100)}if(i==7){pi=0;render()}if(i==8)confetti(90)}
+var nn=0,lines=['decline','nope','try again','nice try','no escape','still no','just tap accept'];
+function flee(){if(no.parentNode!==ph)ph.appendChild(no);no.style.position='absolute';no.style.zIndex=40;no.style.left=(16+Math.random()*(ph.offsetWidth-170))+'px';no.style.top=(70+Math.random()*(ph.offsetHeight-150))+'px';no.textContent=lines[++nn%lines.length]}
+function dayTap(){var pad=document.getElementById('pad');if(pad.classList.contains('torn'))return;document.getElementById('sheet12').classList.add('tear');setTimeout(function(){pad.classList.add('torn');burstAt(pad);confetti(60);document.getElementById('dhint').style.display='none';document.getElementById('dans').style.display='block';fitAll()},650)}
+function blow(){if(document.getElementById('wish').style.display=='block')return;[0,1,2].forEach(function(i){setTimeout(function(){document.getElementById('fl'+i).style.display='none';document.getElementById('sm'+i).classList.add('go')},i*260)});setTimeout(function(){document.getElementById('wish').style.display='block';fitAll();confetti(70)},900)}
 function openLetter(){document.getElementById('letterEnv').style.display='none';document.getElementById('letter').style.display='block';var el=document.getElementById('ltxt'),i=0;el.textContent='';clearInterval(typing);typing=setInterval(function(){el.textContent=LETTER.slice(0,++i);if(i>=LETTER.length)finishType()},28)}
 function finishType(){clearInterval(typing);document.getElementById('ltxt').textContent=LETTER;document.getElementById('lnext').style.visibility='visible'}
 function zoom(src,cap){if(!src)return;document.getElementById('lbp').innerHTML='<img src="'+src+'">';document.getElementById('lbc').textContent=cap;document.getElementById('lb').classList.add('on')}
-function render(){var p=pages[pi],c=PAL[pi%PAL.length],el=document.getElementById('page'),n=String(pi+1).padStart(2,'0');el.style.background=c[0];
- var photo=p[2]?'<div style="background:#fff;border:2px solid #1b2a52;padding:6px;display:inline-block;transform:rotate('+(pi%2?2:-2)+'deg)"><div class="pf" style="width:170px;height:170px" onclick="event.stopPropagation();zoom(pages['+pi+'][2],pages['+pi+'][0])"><img src="'+p[2]+'"></div></div>':'';
- el.innerHTML='<div style="font-family:Fredoka;font-size:40px;color:'+c[1]+'">'+n+'</div>'+photo+'<div class="ttl" style="font-size:23px;color:'+c[1]+'">'+p[0]+'</div><div class="txt" style="font-size:18px">'+p[1]+'</div>';document.getElementById('cnt').textContent=(pi+1)+' of '+pages.length}
+function render(){var p=pages[pi],c=PAL[pi%PAL.length],el=document.getElementById('page'),n=String(pi+1).padStart(2,'0');el.style.background=c[0];el.style.setProperty('--st',c[1]+'55');
+ var fr=p[2]?'<div class="pframe" style="transform:rotate('+(pi%2?2:-2)+'deg)"><div class="badge" style="background:'+c[1]+'">'+n+'</div><div class="pf" style="width:168px;height:200px" onclick="event.stopPropagation();zoom(pages['+pi+'][2],pages['+pi+'][0])"><img src="'+p[2]+'"></div></div>':'<div class="badge" style="position:relative;top:0;left:0;display:inline-block;background:'+c[1]+'">'+n+'</div>';
+ el.innerHTML=fr+'<div class="ttl" style="font-size:24px;color:'+c[1]+';margin-top:10px">'+p[0]+'</div><div class="txt" style="font-size:18px">'+p[1]+'</div>';document.getElementById('cnt').textContent=(pi+1)+' / '+pages.length}
 function flipPage(d){if(busy)return;if(pi+d>=pages.length){go(8);return}if(pi+d<0)return;busy=true;var el=document.getElementById('page');el.classList.add('fo');setTimeout(function(){pi+=d;render();el.classList.remove('fo');el.classList.add('fi');setTimeout(function(){el.classList.remove('fi');busy=false},400)},280)}
-function restart(){document.getElementById('stage1').className='noanim';var n=document.getElementById('no');n.style.position='';n.textContent='decline';document.getElementById('dhint').style.display='';document.getElementById('dans').style.display='none';[0,1,2].forEach(function(i){document.getElementById('fl'+i).style.display='';document.getElementById('sm'+i).classList.remove('go')});document.getElementById('wish').style.display='none';document.getElementById('letterEnv').style.display='';document.getElementById('letter').style.display='none';document.getElementById('lnext').style.visibility='hidden';show(0);startWalk()}
+function restart(){document.getElementById('stage1').className='noanim';homeNo();document.getElementById('pad').classList.remove('torn');document.getElementById('sheet12').classList.remove('tear');document.getElementById('dhint').style.display='';document.getElementById('dans').style.display='none';[0,1,2].forEach(function(i){document.getElementById('fl'+i).style.display='';document.getElementById('sm'+i).classList.remove('go')});document.getElementById('wish').style.display='none';document.getElementById('letterEnv').style.display='';document.getElementById('letter').style.display='none';document.getElementById('lnext').style.visibility='hidden';show(0);startWalk()}
 </script>
 </body>
 </html>
